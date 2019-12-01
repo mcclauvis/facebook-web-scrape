@@ -1,0 +1,60 @@
+var getNameFromHtml = document.querySelector("#reaction_profile_browser > li:nth-child(1) > div > div > div > div._6a._5j0c > div:nth-child(2) > div > a").innerText
+
+//TASK 1: We need to collect all the names!
+var arrOfNames = []
+
+function fillArrOfNames(limit){
+    for (var i = 1; i <= limit; i++){
+        arrOfNames[i-1] = document.querySelector(`#reaction_profile_browser > li:nth-child(${i}) > div > div > div > div._6a._5j0c > div:nth-child(2) > div > a`).innerText
+    }
+}
+fillArrOfNames(50)
+
+//TASK 2:Let's go and find the codes of the heart, like, wow, sad and haha reactions!
+var classValueHeart = "_2p78 _2p7a _9-- img sp_Ip7XdtW3sur sx_27f980"
+var classValueLike = "_2p78 _2p7a _9-- img sp_Ip7XdtW3sur sx_b11b97"
+var classValueWow = "_2p78 _2p7a _9-- img sp_Ip7XdtW3sur sx_d3a685"
+var classValueHaha = "_2p78 _2p7a _9-- img sp_Ip7XdtW3sur sx_5e644e"
+var classValueSad = "_2p78 _2p7a _9-- img sp_Ip7XdtW3sur sx_f11439"
+
+
+//TASK 3:Let's make a function and a variable name that accepts a name of a person
+function getReaction (name){
+    for (var i = 1; i <= arrOfNames.length; i++){
+        if (name == arrOfNames[i-1]){
+            var reaction= document.querySelector(`#reaction_profile_browser > li:nth-child(${i}) > div > a > div > div > span > i`).classList.value
+            searchReaction(arrOfNames[i-1], reaction)
+        }
+
+    }
+}
+
+//TASK 4:Let's create a searchReaction function that accepts a name and a reaction variable!
+function searchReaction (name, reaction){
+
+    if (reaction == classValueHeart){
+        console.log(name , "-> Heart")
+    }
+    if (reaction == classValueLike){
+        console.log(name , "-> Like")
+    }
+    if (reaction == classValueWow){
+        console.log(name , "-> Wow")
+    }
+    if (reaction == classValueSad){
+        console.log(name , "-> Sad")
+    }
+    if (reaction == classValueSad){
+        console.log(name , "-> Haha")
+    }
+}
+
+
+// TASK 5: Knowing the reaction of a name (person)
+getReaction("Mckeen Mamonong Asma")
+getReaction("Rebecca Mamonong")
+getReaction("Patrick Barcelo")
+getReaction("Christian John Talo")
+getReaction("Cjames Buot")
+getReaction("Roger Axma")
+getReaction("Denryl Brina")
